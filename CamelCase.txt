@@ -10,25 +10,29 @@ import java.util.stream.*;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
-class Result {
 
-    public static int runningTime(List<Integer> arr) {
-        int shifts = 0;
+    class Result {
 
-        for (int i = 1; i < arr.size(); i++) {
-            int key = arr.get(i);
-            int j = i - 1;
+    /*
+     * Complete the 'camelcase' function below.
+     *
+     * The function is expected to return an INTEGER.
+     * The function accepts STRING s as parameter.
+     */
 
-            while (j >= 0 && arr.get(j) > key) {
-                arr.set(j + 1, arr.get(j));
-                j--;
-                shifts++;  // Count each shift operation
+    public static int camelcase(String s) {
+        int count = 1; 
+
+        for(int i = 0; i < s.length(); i++) {
+            // Count uppercase letters as they indicate the start of a new word in camelCase
+            if(Character.isUpperCase(s.charAt(i))) {
+                count++;
             }
-            arr.set(j + 1, key);
         }
-
-        return shifts;
+        
+        return count;
     }
+
 }
 
 public class Solution {
@@ -36,13 +40,9 @@ public class Solution {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
-        int n = Integer.parseInt(bufferedReader.readLine().trim());
+        String s = bufferedReader.readLine();
 
-        List<Integer> arr = Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
-            .map(Integer::parseInt)
-            .collect(toList());
-
-        int result = Result.runningTime(arr);
+        int result = Result.camelcase(s);
 
         bufferedWriter.write(String.valueOf(result));
         bufferedWriter.newLine();

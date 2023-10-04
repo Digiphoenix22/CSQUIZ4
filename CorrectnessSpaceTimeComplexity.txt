@@ -1,0 +1,15 @@
+Time Complexity:
+
+In the worst-case scenario for insertion sort (when the input array is reversed), for each i (from 1 to n-1), the inner while loop will run for i iterations. Making the time complexity by the series: (1+2+3+...+(n−1))/2 this is an arithmetic series which sums to n(n−1), which then finally leads us to O(n^2).
+
+So, the worst-case time complexity of insertion sort is O(n^2)
+
+In the best-case scenario, where the list is already sorted, the inner while loop doesn't run, making the best-case time complexity O(n).
+
+Space Complexity:
+
+Insertion sort is an in-place sorting algorithm. The given code doesn't use any additional data structures that grow with the input size. It only uses a constant amount of extra space for variables (i, j, value). The space complexity is O(1), which represents constant space.
+
+In terms of the OTHER parts of the code:
+
+printArray: This method has a time complexity of O(n) as it prints each element of the array once and a space complexity of O(1).
